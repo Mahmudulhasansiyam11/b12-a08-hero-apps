@@ -2,6 +2,11 @@ import githubLogo from "../../../assets/github-logo.png";
 import logo from "../../../assets/logo.png";
 
 const NavBar = () => {
+
+    const handleButton = () => {
+        window.open("https://github.com/Mahmudulhasansiyam11", "_blank");
+    }
+
   const links = (
     <div className="flex flex-col md:flex-row gap-8">
       <div>
@@ -81,7 +86,7 @@ const NavBar = () => {
 
       {/* Navbar right */}
       <div className="navbar-end">
-        <a className="btn inter-font font-semibold text-[16px] bg-gradient-to-r from-[#632EE3] to-[#9F62F2] text-white">
+        <a onClick={handleButton} className="btn inter-font font-semibold text-[16px] bg-gradient-to-r from-[#632EE3] to-[#9F62F2] text-white">
           <img src={githubLogo} alt="" />
           Contribute
         </a>
