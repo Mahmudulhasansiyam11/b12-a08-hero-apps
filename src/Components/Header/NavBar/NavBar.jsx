@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import githubLogo from "../../../assets/github-logo.png";
 import logo from "../../../assets/logo.png";
 
@@ -10,20 +11,20 @@ const NavBar = () => {
   const links = (
     <div className="flex flex-col md:flex-row gap-8">
       <div>
-        <a
+        <Link to='/'
           className="inter-font font-semibold hover:bg-gradient-to-r hover:from-[#632EE3] hover:to-[#9F62F2] hover:bg-clip-text hover:text-transparent hover:underline hover:decoration-[#9F62F2]"
           href=""
         >
           Home
-        </a>
+        </Link>
       </div>
       <div>
-        <a
+        <Link to='/app'
           className="inter-font font-semibold hover:bg-gradient-to-r hover:from-[#632EE3] hover:to-[#9F62F2] hover:bg-clip-text hover:text-transparent hover:underline hover:decoration-[#9F62F2]"
           href=""
         >
           Apps
-        </a>
+        </Link>
       </div>
       <div>
         <a
@@ -74,9 +75,9 @@ const NavBar = () => {
             <img className="w-10" src={logo} alt="" />
           </div>
           <div>
-            <a className="inter-font font-bold text-[16px] bg-gradient-to-r from-[#632EE3] to-[#9F62F2] bg-clip-text text-transparent">
+            <Link to='/' className="inter-font font-bold text-[16px] bg-gradient-to-r from-[#632EE3] to-[#9F62F2] bg-clip-text text-transparent">
               HERO.IO
-            </a>
+            </Link>
           </div>
         </div>
       </div>
