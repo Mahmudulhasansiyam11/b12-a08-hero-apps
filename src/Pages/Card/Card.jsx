@@ -21,7 +21,7 @@ const Card = ({ data }) => {
           <div className="flex justify-between items-center mt-[16px]">
             <div className="w-[70px] bg-[#F1F5E8] p-[6px] flex justify-center items-center gap-[8px] rounded-[4px]">
               <img className="w-[15px]" src={downloadIcon} alt="" />
-              <p>{downloads}</p>
+              <p>{downloads}B</p>
             </div>
 
             <div className="w-[70px] bg-[#FFF0E1] p-[6px] flex justify-center items-center gap-[8px] rounded-[4px]">

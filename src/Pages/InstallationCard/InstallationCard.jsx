@@ -26,7 +26,7 @@ const InstallationCard = ({appData}) => {
 
                         <div className='flex items-center gap-1'>
                             <img className='w-[12px]' src={downloadIcon} alt="" />
-                            <p className='inter-font font-medium text-[#00D390]'>{downloads}</p>
+                            <p className='inter-font font-medium text-[#00D390]'><span>{downloads}</span>B</p>
                         </div>
                         <div className='flex items-center gap-1'>
                             <img className='w-[12px]' src={ratingIcon} alt="" />
