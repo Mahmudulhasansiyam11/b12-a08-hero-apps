@@ -1,14 +1,19 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
 import "react-tabs/style/react-tabs.css";
-import { getStoredApp } from "../../Utility/AddToDB";
-import InstallationCard from "../InstallationCard/InstallationCard";
+import { toast } from "react-toastify";
+import downloadIcon from "../../assets/icon-downloads.png";
+import ratingIcon from "../../assets/icon-ratings.png";
+import { getStoredApp, removeToStoreDB } from "../../Utility/AddToDB";
 
 const Installation = () => {
   const [readList, SetReadList] = useState([]);
   const [sort, setSort] = useState("");
   const appData = useLoaderData();
   console.log(appData);
+
+  
 
   useEffect(() => {
     const storedAppData = getStoredApp();
@@ -31,6 +36,13 @@ const Installation = () => {
         SetReadList(sortedByHighToLow);
     }
   }
+
+  const handleRemove = (id, title) => {
+    toast(`${title} un-installed from your Device`);
+    removeToStoreDB(id);
+    SetReadList(prev => prev.filter(app => app.id !== id));
+  }
+
 
   
   return (
@@ -75,10 +87,46 @@ const Installation = () => {
 
       <div className="pt-[16px] max-w-[1140px] mx-auto pb-[20px] md:pb-[40px] lg:pb-[60px]">
         {readList.map((appData) => (
-          <InstallationCard
-            key={appData.id}
-            appData={appData}
-          ></InstallationCard>
+
+           <div className='mt-3 bg-white rounded-[4px] p-2'>
+                      <div className='flex justify-between items-center'>
+                      <div className="flex justify-center items-center gap-4">
+                          <div>
+                              <img className='w-[80px]' src={appData.image} alt="" />
+                          </div>
+                          <div>
+                              <h3 className='inter-font font-medium text-[20px]'>{appData.title}</h3>
+          
+                              <div className='mt-[16px] flex justify-center items-center gap-4'>
+          
+                                  <div className='flex items-center gap-1'>
+                                      <img className='w-[12px]' src={downloadIcon} alt="" />
+                                      <p className='inter-font font-medium text-[#00D390]'><span>{appData.downloads}</span>B</p>
+                                  </div>
+                                  <div className='flex items-center gap-1'>
+                                      <img className='w-[12px]' src={ratingIcon} alt="" />
+                                      <p className='inter-font font-medium text-[#FF8811]'>{appData.ratingAvg}</p>
+                                  </div>
+                                  <div className='flex items-center gap-1'>
+                                      <p className='inter-font font-medium text-[#627382]'>{appData.size} MB</p>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+          
+                      {/* Uninstall Button */}
+                      <div>
+                          <div>
+                              <button onClick={() => handleRemove(appData.id, appData.title)} className='text-white bg-[#00D390] rounded-[4px] px-[16px] py-[12px]'>Uninstall</button>
+                          </div>
+                      </div>
+          
+                  </div>
+                  </div>
+          // <InstallationCard
+          //   key={appData.id}
+          //   appData={appData}
+          // ></InstallationCard>
         ))}
       </div>
     </div>
