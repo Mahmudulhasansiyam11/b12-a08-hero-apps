@@ -17,7 +17,8 @@ const router = createBrowserRouter([
         },
         {
             path: "/app",
-            Component: App
+            Component: App,
+            loader: () => fetch('/hero.json'),
         }
     ]
   },
