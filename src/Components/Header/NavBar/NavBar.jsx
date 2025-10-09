@@ -27,12 +27,12 @@ const NavBar = () => {
         </Link>
       </div>
       <div>
-        <a
+        <Link to='/installation'
           className="inter-font font-semibold hover:bg-gradient-to-r hover:from-[#632EE3] hover:to-[#9F62F2] hover:bg-clip-text hover:text-transparent hover:underline hover:decoration-[#9F62F2]"
           href=""
         >
           Installation
-        </a>
+        </Link>
       </div>
     </div>
   );

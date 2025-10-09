@@ -1,18 +1,23 @@
 import { useLoaderData, useParams } from "react-router";
+import { toast } from 'react-toastify';
+
 import {
-  Bar,
-  BarChart,
-  CartesianGrid,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
+    Bar,
+    BarChart,
+    CartesianGrid,
+    ResponsiveContainer,
+    Tooltip,
+    XAxis,
+    YAxis,
 } from "recharts";
 import downloadImage from "../../assets/icon-downloads.png";
 import ratingImage from "../../assets/icon-ratings.png";
 import reviewImage from "../../assets/icon-review.png";
+import { addToStoreDB } from "../../Utility/AddToDB";
+import { useState } from "react";
 
 const AppDetails = () => {
+    const [click, setClick] = useState(false);
   const id = useParams();
   // console.log(id);
   const convertedId = parseInt(id.id);
@@ -20,8 +25,6 @@ const AppDetails = () => {
   // console.log(appData);
   const app = appData.find((a) => a.id === convertedId);
   console.log(app);
-
- 
 
   const {
     image,
@@ -34,6 +37,13 @@ const AppDetails = () => {
     ratings,
     description,
   } = app;
+
+
+  const handleInstall = (id) => {
+    toast(`Yahoo 🎉 !! ${title} Installed Successfully`);
+    addToStoreDB(id.id);
+    setClick(true);
+  }
 
   return (
     <div className="bg-gray-200">
@@ -92,10 +102,11 @@ const AppDetails = () => {
                 </div>
               </div>
 
+              {/* Install Now Button */}
               <div className="mt-3 ">
                 <div>
-                  <button className="inter-font font-semibold text-white text-[20px] bg-[#00D390] rounded-[4px] px-[20px] py-[14px]">
-                    Install Now ({size} MB)
+                  <button disabled={click} onClick={()=> handleInstall(id)} className="inter-font font-semibold text-white text-[20px] bg-[#00D390] rounded-[4px] px-[20px] py-[14px]">
+                    {click ? `Installed` : `Install Now (${size} MB)`}
                   </button>
                 </div>
               </div>

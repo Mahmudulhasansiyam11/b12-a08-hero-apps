@@ -5,6 +5,7 @@ import App from "../Pages/App/App";
 import AppDetails from "../Pages/AppDetails/AppDetails";
 import PageError from "../Errors/PageError/PageError";
 import SearchError from "../Errors/SearchError/SearchError";
+import Installation from "../Pages/Installation/Installation";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
         loader: () => fetch("../hero.json"),
         errorElement: <SearchError></SearchError>,
       },
+      {
+        path: "/installation",
+        Component: Installation,
+        loader: () => fetch("../hero.json"),
+      }
     ],
     errorElement: <PageError></PageError>,
   },

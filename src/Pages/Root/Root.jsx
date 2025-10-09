@@ -1,7 +1,8 @@
 import React from "react";
-import Header from "../../Components/Header/Header";
-import Footer from "../../Components/Footer/Footer";
 import { Outlet, useNavigation } from "react-router";
+import { ToastContainer } from 'react-toastify';
+import Footer from "../../Components/Footer/Footer";
+import Header from "../../Components/Header/Header";
 
 const Root = () => {
   const navigation = useNavigation();
@@ -17,6 +18,7 @@ const Root = () => {
       )}
       <Outlet></Outlet>
       <Footer></Footer>
+      <ToastContainer />
     </div>
   );
 };
