@@ -1,12 +1,13 @@
-import { useLoaderData } from "react-router";
-import Card from "../Card/Card";
 import { useState } from "react";
+import { useLoaderData } from "react-router";
 import SearchError from "../../Errors/SearchError/SearchError";
+import Card from "../Card/Card";
 
 const App = () => {
   const [search, setSearch] = useState("");
   const appdata = useLoaderData();
   //   console.log(appdata);
+  
 
   const term = search.trim().toLocaleLowerCase();
   const searchedAppData = term
@@ -70,7 +71,8 @@ const App = () => {
           {searchedAppData.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-[16px]">
               {searchedAppData.map((data) => (
-                <Card key={data.id} data={data}></Card>
+                <Card key={data.id} data={data}>
+                </Card>
               ))}
             </div>
           ) : (

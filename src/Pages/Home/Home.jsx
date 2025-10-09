@@ -3,6 +3,8 @@ import appStore from "../../assets/appStore.png";
 import googlePlay from "../../assets/googlePlay.png";
 import heroImage from "../../assets/hero.png";
 import Card from "../Card/Card";
+import { Suspense } from "react";
+import SearchError from "../../Errors/SearchError/SearchError";
 
 const Home = () => {
 

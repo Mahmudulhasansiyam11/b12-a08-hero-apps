@@ -1,12 +1,12 @@
 import { useLoaderData, useParams } from "react-router";
 import {
-    Bar,
-    BarChart,
-    CartesianGrid,
-    ResponsiveContainer,
-    Tooltip,
-    XAxis,
-    YAxis,
+  Bar,
+  BarChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
 } from "recharts";
 import downloadImage from "../../assets/icon-downloads.png";
 import ratingImage from "../../assets/icon-ratings.png";
@@ -20,6 +20,8 @@ const AppDetails = () => {
   // console.log(appData);
   const app = appData.find((a) => a.id === convertedId);
   console.log(app);
+
+ 
 
   const {
     image,
@@ -112,24 +114,22 @@ const AppDetails = () => {
           </div>
 
           {/* BarChart */}
+         
           <div className="mx-5">
             <ResponsiveContainer width="100%" height={300}>
               <BarChart
                 data={ratings}
-                // margin={{ top: 20, right: 30, left: 0, bottom: 5 }}
+                layout="vertical" 
+                margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
+                <XAxis type="count" /> 
+                <YAxis type="category" dataKey="name" />
                 <Tooltip />
                 <Bar dataKey="count" fill="#FF8811" radius={[8, 8, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
-
-          
-
-
         </div>
 
         <div className="mt-[20px] md:mt-[30px] lg:mt-[40px] mx-5">
@@ -139,19 +139,18 @@ const AppDetails = () => {
         {/* Description */}
         <div className="mt-[20px] md:mt-[30px] lg:mt-[40px] mx-5">
           <div>
-            <h3 className="inter-font font-semibold text-[24px]">Description</h3>
+            <h3 className="inter-font font-semibold text-[24px]">
+              Description
+            </h3>
           </div>
 
           {/* Description */}
           <div className="mt-6 pb-[30px] md:pb-[50px] lg:pb-[60px] ">
-            <p className="inter-font font-light text-[20px] text-[#627382]">{description}</p>
+            <p className="inter-font font-light text-[20px] text-[#627382]">
+              {description}
+            </p>
           </div>
-
-          
-
-
         </div>
-
       </div>
     </div>
   );

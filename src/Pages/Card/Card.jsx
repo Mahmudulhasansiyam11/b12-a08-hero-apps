@@ -5,6 +5,8 @@ import ratingIcon from "../../assets/icon-ratings.png";
 const Card = ({ data }) => {
   const { id, image, title, downloads, ratingAvg } = data;
 
+
+
   return (
     <Link to={`/app/${id}`} className="flex justify-center items-center">
       <div className="w-[270px] bg-white p-[16px] rounded-[8px] shadow hover:scale-105 transition ease-in-out">
