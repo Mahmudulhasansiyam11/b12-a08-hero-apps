@@ -74,7 +74,7 @@ const App = () => {
               ))}
             </div>
           ) : (
-            <div className="flex justify-center items-center py-10">
+            <div className="">
               <SearchError></SearchError>
             </div>
           )}

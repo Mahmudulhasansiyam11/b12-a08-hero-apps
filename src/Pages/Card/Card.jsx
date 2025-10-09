@@ -1,11 +1,12 @@
+import { Link } from "react-router";
 import downloadIcon from "../../assets/icon-downloads.png";
 import ratingIcon from "../../assets/icon-ratings.png";
 
 const Card = ({ data }) => {
-  const { image, title, downloads, ratingAvg } = data;
+  const { id, image, title, downloads, ratingAvg } = data;
 
   return (
-    <div className="flex justify-center items-center">
+    <Link to={`/app/${id}`} className="flex justify-center items-center">
       <div className="w-[270px] bg-white p-[16px] rounded-[8px] shadow hover:scale-105 transition ease-in-out">
         <div className="">
           <div className="flex justify-center items-center">
@@ -28,7 +29,7 @@ const Card = ({ data }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
