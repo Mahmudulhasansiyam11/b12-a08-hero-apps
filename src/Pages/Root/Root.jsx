@@ -12,7 +12,7 @@ const Root = () => {
     <div>
       <Header></Header>
       {isNavigating && (
-        <div class="spinner-border text-info" role="status">
+        <div class="spinner-border text-info flex justify-center items-center" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>
       )}

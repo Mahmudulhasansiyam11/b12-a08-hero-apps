@@ -14,3 +14,11 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+### App Dtails
+
+### App Name: Hero App
+
+### Technologies: react, react router, recharts, toastify, tailwind CSS, DaisyUI
+
+### DesCription: This app website display recently popular apps. and each apps after click then go to details page and display app name, title, image, ratings with barChart, description. And user also install app and also uninstall app through this website.

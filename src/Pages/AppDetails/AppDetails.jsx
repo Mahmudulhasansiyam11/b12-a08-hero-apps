@@ -1,14 +1,14 @@
 import { useLoaderData, useParams } from "react-router";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 import {
-    Bar,
-    BarChart,
-    CartesianGrid,
-    ResponsiveContainer,
-    Tooltip,
-    XAxis,
-    YAxis,
+  Bar,
+  BarChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
 } from "recharts";
 import downloadImage from "../../assets/icon-downloads.png";
 import ratingImage from "../../assets/icon-ratings.png";
@@ -17,7 +17,7 @@ import { addToStoreDB } from "../../Utility/AddToDB";
 import { useState } from "react";
 
 const AppDetails = () => {
-    const [click, setClick] = useState(false);
+  const [click, setClick] = useState(false);
   const id = useParams();
   // console.log(id);
   const convertedId = parseInt(id.id);
@@ -38,12 +38,14 @@ const AppDetails = () => {
     description,
   } = app;
 
-
   const handleInstall = (id) => {
     toast(`Yahoo 🎉 !! ${title} Installed Successfully`);
     addToStoreDB(id.id);
     setClick(true);
-  }
+  };
+
+  // Sort ratings in descending order 
+  const sortedRatings = [...ratings].sort((a, b) => b.count - a.count);
 
   return (
     <div className="bg-gray-200">
@@ -80,7 +82,7 @@ const AppDetails = () => {
                     <img src={downloadImage} alt="" />
                     <p className="mt-3 inter-font font-light">Downloads</p>
                     <p className="inter-font font-extrabold text-[40px]">
-                      {downloads}
+                      {downloads}B
                     </p>
                   </div>
                   <div>
@@ -105,7 +107,11 @@ const AppDetails = () => {
               {/* Install Now Button */}
               <div className="mt-3 ">
                 <div>
-                  <button disabled={click} onClick={()=> handleInstall(id)} className="inter-font font-semibold text-white text-[20px] bg-[#00D390] rounded-[4px] px-[20px] py-[14px]">
+                  <button
+                    disabled={click}
+                    onClick={() => handleInstall(id)}
+                    className="inter-font font-semibold text-white text-[20px] bg-[#00D390] rounded-[4px] px-[20px] py-[14px]"
+                  >
                     {click ? `Installed` : `Install Now (${size} MB)`}
                   </button>
                 </div>
@@ -125,22 +131,23 @@ const AppDetails = () => {
           </div>
 
           {/* BarChart */}
-         
+
           <div className="mx-5">
             <ResponsiveContainer width="100%" height={300}>
               <BarChart
-                data={ratings}
-                layout="vertical" 
+                data={sortedRatings}
+                layout="vertical"
                 margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis type="count" /> 
+                <XAxis type="number" /> {/* should be 'number' not 'count' */}
                 <YAxis type="category" dataKey="name" />
                 <Tooltip />
                 <Bar dataKey="count" fill="#FF8811" radius={[8, 8, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
+
         </div>
 
         <div className="mt-[20px] md:mt-[30px] lg:mt-[40px] mx-5">
